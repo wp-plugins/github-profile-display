@@ -9,7 +9,7 @@ Allows a user to add a widget to show their Github repositories on their site.
 
 == Description ==
 
-OpenAttribute allows you to add licensing information to your Wordpress site and individual blogs. It places information into posts and RSS feeds as well as other user friendly features. This plugin is an part of the OpenAttribute project which is part of Mozilla Drumbeat.
+Allows a user to display their github repositories on a WordPress page.
 
 == Installation ==
 
