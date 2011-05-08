@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: Github Widget for Wordpress
+Contributors: pgogy
 Tags: github, repository, git
 Requires at least: 3.0.0
 Tested up to: 3.1
