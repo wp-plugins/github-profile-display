@@ -28,10 +28,10 @@ e.g.
 
 == Screenshots ==
 
-screenshot-1.png
-screenshot-2.png
-screenshot-3.png
-screenshot-4.png
+1. Fully expanded widget
+2. Widget in twentyten theme
+3. Widget setup
+4. Further Widget setup
 
 == Frequently Asked Questions ==
 
