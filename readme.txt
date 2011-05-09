@@ -28,6 +28,11 @@ e.g.
 
 == Screenshots ==
 
+screenshot-1.png
+screenshot-2.png
+screenshot-3.png
+screenshot-4.png
+
 == Frequently Asked Questions ==
 
 We are a new plugin - so no questions so far.
