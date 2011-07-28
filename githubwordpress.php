@@ -29,10 +29,11 @@ class githubwordpress extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
-		extract($args);		
-		echo $before_widget;
+		extract($args);	
 		
+		$data = explode("</li>",$before_widget);			
 		
+		echo $data[0];
 		
 		// create a new cURL resource
 		$ch = curl_init();
@@ -54,35 +55,32 @@ class githubwordpress extends WP_Widget {
 		
 		$xml = new SimpleXMLElement($data);
 	
-		?><li><h3 class="widget-title">GitHub</h3>
-			<div style="text-align:center">
-			<p style="padding:0px; margin:0px;">
-				<img src="<?PHP
+		?><h3 class="widget-title">GitHub</h3>
+			<div style="padding:0px; margin:0px;">
+			  <img src="<?PHP
 				
-					echo plugins_url('/octocat_small.png', __FILE__);
+				echo plugins_url('/octocat_small.png', __FILE__);
 					
-				?>" />
-			</p>
-			<p style="padding:0px; margin:0px;">
-				<a target="_blank" href="https://www.github.com/<?PHP
+			  ?>" />
+			</div>
 				
-					echo $user;
+			<a target="_blank" href="https://www.github.com/<?PHP
 				
-				?>"><?PHP
+				echo $user;
+					
+			?>"><?PHP
 				
-					echo $user;
+				echo $user;
 				
-				?></a> @ <a target="_blank" href="https://www.github.com">Github</a>
-			</p>
-			<p>
-				<a style="cursor:hand; cursor:pointer" onclick="javascript:if(document.getElementById('githublist').style.display!='block'){document.getElementById('githublist').style.display='block';}else{document.getElementById('githublist').style.display='none';};">Show repositories</a>
-			</p></div>
-			<div id="githublist" style="text-align:left; display:none">
+			?></a> @ <a target="_blank" href="https://www.github.com">Github</a>
+				
+			<div style="padding-bottom: 20px;">	
+			<a style="cursor:hand; cursor:pointer" onclick="javascript:if(document.getElementById('githublist').style.display!='block'){document.getElementById('githublist').style.display='block';document.getElementById('githubrepshow').innerHTML = 'Hide my repositories';}else{document.getElementById('githublist').style.display='none';document.getElementById('githubrepshow').innerHTML = 'Show my repositories'};">Show my repositories</a>
+                        </div>
+			<ul id="githublist" style="text-align:left; display:none">
 			<?PHP	
 				
 		foreach($xml->repository as $repo){
-		
-			echo "<ul>";
 		
 			echo "<li><a target=\"_blank\" href=\"http://www.github.com/$user/$repo->name\">$repo->name</a><br />";
 			$url = "http://github.com/api/v2/xml/repos/show/" . $user . "/" . $repo->name . "/contributors";
@@ -107,17 +105,13 @@ class githubwordpress extends WP_Widget {
 			
 			}	
 			
-			echo (int)(($counter/$total)*100) . " percent of total <br />Languages $repo->language</li></ul>";
+			echo (int)(($counter/$total)*100) . " percent of total <br />Languages $repo->language</li>";
 		
 		}
 		
-		echo "<li>";	
-		
 		curl_close($ch);
 				
-		echo "</div>";
-		
-		echo $after_widget;
+		echo "</ul>";
 		
 	}
 	
