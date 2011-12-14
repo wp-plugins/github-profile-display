@@ -8,8 +8,8 @@ Stable tag: 0.91
 Allows a user to add a widget to show their Github repositories on their site.
 
 == Description ==
+Allows a user to add a widget to show their Github repositories on their site. Based around the main Github site and its API
 
-OpenAttribute allows you to add licensing information to your Wordpress site and individual blogs. It places information into posts and RSS feeds as well as other user friendly features. This plugin is an part of the OpenAttribute project which is part of Mozilla Drumbeat.
 
 == Installation ==
 
@@ -30,6 +30,11 @@ e.g.
 * This is the first version we have distributed - no changes have been made post this initial release as of yet.
 
 == Screenshots ==
+
+1. widget in sidebar
+2. Collapsed Widget
+3. How to find the widget
+4. Widget config
 
 == Frequently Asked Questions ==
 
