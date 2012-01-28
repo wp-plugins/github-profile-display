@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Github Wordpress Widget
-Plugin URI: http://www.pgogy.com/code/githubwordpress
+Plugin URI: http://www.pgogy.com/code/github-wordpress
 Description: A widget for displaying github profiles
 Version: 0.92
 Author: Pgogy
