@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: openattribute, mhutchin
+Contributors: pgogy, mhutchin
 Tags: github, repository, git
 Requires at least: 3.0.0
 Tested up to: 3.3
@@ -22,6 +22,9 @@ e.g.
 3. Visit the settings page for the plugin - No other configuration is required.
 
 == Changelog ==
+
+= 0.92 =
+* Bug fix (forced refresh to ensure old bug removed)
 
 = 0.91 =
 * Bug fixed and new features added.
