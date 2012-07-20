@@ -3,7 +3,7 @@
 Plugin Name: Github Wordpress Widget
 Plugin URI: http://www.pgogy.com/code/githubwordpress
 Description: A widget for displaying github profiles
-Version: 0.93
+Version: 0.94
 Author: Pgogy
 Author URI: http://www.pgogy.com
 License: GPL2
@@ -22,9 +22,6 @@ class githubwordpress extends WP_Widget {
 		echo '<p><label for="' . $this->get_field_id("username") .'">GitHub Username:</label>';
 		echo '<input type="text" name="' . $this->get_field_name("username") . '" '; 
 		echo 'id="' . $this->get_field_id("username") . '" value="' . $instance["username"] . '" /></p>';
-		echo '<p><label for="' . $this->get_field_id("password") .'">GitHub Password:</label>';
-		echo '<input type="password" name="' . $this->get_field_name("password") . '" '; 
-		echo 'id="' . $this->get_field_id("password") . '" value="' . $instance["password"] . '" /></p>';
 		echo '</div>';
 	}
 
@@ -48,7 +45,6 @@ class githubwordpress extends WP_Widget {
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-		//curl_setopt($ch, CURLOPT_HTTPHEADER, array($user . ":" . $password));
 		
 		// grab URL and pass it to the browser
 		$data = curl_exec($ch);
@@ -87,10 +83,7 @@ class githubwordpress extends WP_Widget {
 		foreach($json as $repo){
 		
 			echo "<li><a target=\"_blank\" href=\"http://www.github.com/$user/$repo->name\">$repo->name</a><br />";
-			$url = "https://api.github.com/repos/" . $user . "/" . $repo->name . "/commits";
-			
-			https://api.github.com/repos/patlockley/openattribute-firefox/commits
-			
+			$url = "https://api.github.com/repos/" . $user . "/" . $repo->name . "/commits";		
 			
 			curl_setopt($ch, CURLOPT_URL, $url);
 			$repo_data = curl_exec($ch);
@@ -125,7 +118,6 @@ class githubwordpress extends WP_Widget {
 	function update($new_instance, $old_instance) {
 		$instance = $old_instance;		
 		$instance['username'] = strip_tags( $new_instance['username'] );
-		$instance['password'] = strip_tags( $new_instance['password'] );	
 		return $instance;
 	}		
 	
