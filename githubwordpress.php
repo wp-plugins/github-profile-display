@@ -3,7 +3,7 @@
 Plugin Name: Github Wordpress Widget
 Plugin URI: http://www.pgogy.com/code/githubwordpress
 Description: A widget for displaying github profiles
-Version: 0.96
+Version: 0.97
 Author: Pgogy
 Author URI: http://www.pgogy.com
 License: GPL2
@@ -20,7 +20,15 @@ class githubwordpress extends WP_Widget {
 	
 	function form($instance) {
 		
-		require(dirname(__FILE__) . "/languages/" . get_bloginfo('language') . "/index.php");
+		if(file_exists(dirname(__FILE__) . "/languages/" . get_bloginfo('language') . "/index.php")){
+		
+			require(dirname(__FILE__) . "/languages/" . get_bloginfo('language') . "/index.php");
+			
+		}else{
+		
+			require(dirname(__FILE__) . "/languages/en-US/index.php");
+		
+		}
 		
 		echo '<div id="githubwordpress-widget-form">';
 		echo '<p><label for="' . $this->get_field_id("username") .'">' . $github_username . ' :</label>';
@@ -111,6 +119,16 @@ class githubwordpress extends WP_Widget {
 		?>GitHub<?= $after_title; ?>
 			<!-- octocat picture -->
 			<div class="github_wordpress_image_holder"><img src="<?= plugins_url('/octocat_small.png', __FILE__); ?>" /></div>
+			<script type="text/javascript">
+				function github_wordpress_toggle(){
+					if (jQuery("#githublistdiv").is(":hidden")) {
+						document.getElementById('githubrepshow').innerHTML = '<?= $github_hide_string ?>';
+					} else {
+						document.getElementById('githubrepshow').innerHTML = '<?= $github_show_string ?>';
+					}
+					jQuery('#githublistdiv').slideToggle('slow');
+				}
+			</script>
 
 			<a target="_blank" href="https://www.github.com/<?= $user; ?>"><?= $user; ?></a> @ <a target="_blank" href="https://www.github.com">Github</a>
 			<p><a id="githubrepshow" onclick="javascript:github_wordpress_toggle();">
@@ -129,7 +147,7 @@ class githubwordpress extends WP_Widget {
                                         break;
                                 }
 
-				echo '<li><a target="_blank" href="http://www.github.com/user/' . $repo->name . '">' . $repo->name . '</a><br />';
+				echo '<li><a target="_blank" href="http://www.github.com/repos/' . $user . '/' . $repo->name . '">' . $repo->name . '</a><br />';
 
 				$url = "https://api.github.com/repos/" . $user . "/" . $repo->name . "/commits";
 				curl_setopt($ch, CURLOPT_URL, $url);
@@ -177,7 +195,6 @@ add_action("wp_head","github_add_scripts");
 	
 function github_add_scripts() {
 	echo '<link rel="stylesheet" href="' . plugins_url("/css/github_wordpress_widget.css", __FILE__ ) . '" />';
-	echo '<script type="text/javascript" language="javascript" src="' . plugins_url("/js/github_wordpress_widget.js", __FILE__ ) . '"></script>';
 	echo '<script src="http://code.jquery.com/jquery-latest.js"></script>';
 }
 ?>
