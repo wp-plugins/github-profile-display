@@ -18,6 +18,8 @@ and thanks to ttouch https://github.com/ttouch for the Greek translation
 
 Please see http://www.pgogy.com and http://www.pgogy.com/code/groups/wordpress/github-wordpress-widget/ for support
 
+[vimeo https://vimeo.com/60035852]
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
