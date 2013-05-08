@@ -3,7 +3,7 @@
 Plugin Name: Github Wordpress Widget
 Plugin URI: http://www.pgogy.com/code/groups/wordpress/github-wordpress-widget/
 Description: A widget for displaying github profiles
-Version: 0.98
+Version: 0.99
 Author: Pgogy
 Author URI: http://www.pgogy.com
 License: GPL2
@@ -95,10 +95,12 @@ class githubwordpress extends WP_Widget {
 		
 		// set URL and other appropriate options
 		$ch = curl_init();
+		$vers = curl_version();
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'curl/' . $vers['version'] );
 		
 		if(!empty($password)){
 		
@@ -197,4 +199,3 @@ function github_add_scripts() {
 	echo '<link rel="stylesheet" href="' . plugins_url("/css/github_wordpress_widget.css", __FILE__ ) . '" />';
 	echo '<script src="http://code.jquery.com/jquery-latest.js"></script>';
 }
-?>
